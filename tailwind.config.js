@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        logo:["Big Shoulders Stencil", "sans-serif"],
+        roboto:["Roboto", "sans-serif"],
+      },
+    },
   },
   plugins: [require("daisyui")],
 }
