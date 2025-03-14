@@ -1,19 +1,18 @@
+import AddMovie from "../AddMovie/AddMovie";
 import Navbar from "../Navbar";
 
-const HomeLayout = () => {
+
+const AddMovieLayout = () => {
     return (
         <div className="font-roboto min-h-screen flex flex-col">
             <nav>
                 <Navbar></Navbar>
             </nav>
             <main className="flex-grow">
-
+                <AddMovie></AddMovie>
             </main>
-            <footer>
-
-            </footer>
         </div>
     );
 };
 
-export default HomeLayout;
+export default AddMovieLayout;
