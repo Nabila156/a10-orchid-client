@@ -1,4 +1,4 @@
-
+import Swal from 'sweetalert2'
 
 const AddMovie = () => {
 
@@ -9,17 +9,32 @@ const AddMovie = () => {
         const poster = form.poster.value;
         const genre = form.genre.value;
         const duration = form.duration.value;
-        const year= form.year.value;
+        const year = form.year.value;
         const rating = form.rating.value;
         const summary = form.summary.value;
 
-        const newMovie = {poster,genre,duration,year,rating,summary};
-        console.log(newMovie)
+        const newMovie = { poster, genre, duration, year, rating, summary };
+        // console.log(newMovie)
 
         // send data to the server
-        fetch('https://orchid-server-gilt.vercel.app/',{
-            
+        fetch('http://localhost:5000/movies', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newMovie)
         })
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+
+                Swal.fire({
+                    title: 'Congratulations!',
+                    text: 'User added successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                  })
+            })
     }
     return (
         <div>
