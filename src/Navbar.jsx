@@ -1,7 +1,10 @@
+import { useTheme } from "next-themes";
 import { NavLink } from "react-router-dom";
 
 
 const Navbar = () => {
+
+    const { theme, setTheme } = useTheme();
 
     const links = <>
 
@@ -13,17 +16,25 @@ const Navbar = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100 shadow-sm px-8 pt-8">
+        <div className={`${theme==='dark'?'dark':''} navbar bg-base-100 shadow-sm px-8 pt-8`}>
+
             <div className="flex-1">
                 <div className="flex items-center">
                     <img className="size-12" src="/assets/movies-app.png" alt="logo" />
                     <a className="btn btn-ghost font-logo text-orange-700 font-extrabold text-5xl">ORCHID</a>
                 </div>
             </div>
+
             <div className="flex">
                 <div>
                     <ul className="hidden md:flex items-center gap-5">
                         {links}
+                        <button
+                            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                            className="px-4 py-2 rounded"
+                        >
+                            {theme === "dark" ? "☀️" : "🌙"}
+                        </button>
                     </ul>
                 </div>
                 <div className="dropdown dropdown-end">

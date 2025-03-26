@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const AddMovie = () => {
 
@@ -23,6 +25,18 @@ const AddMovie = () => {
 
         const newMovie = { title, poster, genre, duration, year, rating, summary };
         // console.log(newMovie)
+
+
+        // Validation for movie title
+
+        if (title.length < 2) {
+            toast.error("Title must be at least 2 characters long!", {
+                position: "top-center",
+                autoClose: 3000,
+                theme: "dark"
+            });
+            return;
+        }
 
 
         // send data to the server
@@ -58,33 +72,44 @@ const AddMovie = () => {
                                     <div className="flex gap-8">
                                         <div className="flex flex-col w-1/2">
                                             <label className="fieldset-label hidden md:block">Movie Poster</label>
-                                            <input type="url" name="poster" className="input w-full" placeholder="Movie Poster url" />
+                                            <input type="url" name="poster" className="input w-full" placeholder="Movie Poster url" required />
                                         </div>
                                         <div className="flex flex-col w-1/2">
                                             <label className="fieldset-label hidden md:block">Movie Title</label>
-                                            <input type="text" name="title" className="input w-full" placeholder="Movie Title" />
+                                            <input type="text" name="title" className="input w-full" placeholder="Movie Title" required />
                                         </div>
                                     </div>
 
                                     <div className="flex gap-8">
                                         <div className="flex flex-col w-1/2">
                                             <label className="fieldset-label hidden md:block">Genre</label>
-                                            <input type="text" name="genre" className="input w-full" placeholder="Genre" />
+                                            <select name="genre" className="input w-full text-gray-400" required>
+                                                <option value="" disabled selected hidden>Genre</option>
+                                                <option value="Action">Action</option>
+                                                <option value="Comedy">Comedy</option>
+                                                <option value="Drama">Drama</option>
+                                                <option value="Horror">Horror</option>
+                                                <option value="Romance">Romance</option>
+                                                <option value="Sci-Fi">Sci-Fi</option>
+                                                <option value="Thriller">Thriller</option>
+                                                <option value="Animation">Animation</option>
+                                                <option value="Documentary">Documentary</option>
+                                            </select>
                                         </div>
                                         <div className="flex flex-col w-1/2">
                                             <label className="fieldset-label hidden md:block">Duration</label>
-                                            <input type="text" name="duration" className="input w-full" placeholder="Duration" />
+                                            <input type="text" name="duration" className="input w-full" placeholder="Duration" required />
                                         </div>
                                     </div>
 
                                     <div className="flex gap-8">
                                         <div className="flex flex-col w-1/2">
                                             <label className="fieldset-label hidden md:block">Release Year</label>
-                                            <input type="text" name="year" className="input w-full" placeholder="Release Year" />
+                                            <input type="text" name="year" className="input w-full" placeholder="Release Year" required />
                                         </div>
                                         <div className="flex flex-col w-1/2">
                                             <label className="fieldset-label hidden md:block">Summary</label>
-                                            <input type="text" name="summary" className="input w-full" placeholder="Summary" />
+                                            <input type="text" name="summary" className="input w-full" placeholder="Summary" required />
                                         </div>
 
                                     </div>

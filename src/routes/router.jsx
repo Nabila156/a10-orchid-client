@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomeLayout from "../layouts/HomeLayout";
-import ErrorPage from "../ErrorPge";
+import ErrorPage from "../ErrorPage";
 import AddMovieLayout from "../layouts/AddMovieLayout";
 
 
