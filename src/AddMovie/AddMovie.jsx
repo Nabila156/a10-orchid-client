@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
 import Swal from 'sweetalert2';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 
 const AddMovie = () => {
@@ -84,7 +84,7 @@ const AddMovie = () => {
                                         <div className="flex flex-col w-1/2">
                                             <label className="fieldset-label hidden md:block">Genre</label>
                                             <select name="genre" className="input w-full text-gray-400" required>
-                                                <option value="" disabled selected hidden>Genre</option>
+                                                <option value="" disabled hidden>Genre</option>
                                                 <option value="Action">Action</option>
                                                 <option value="Comedy">Comedy</option>
                                                 <option value="Drama">Drama</option>
