@@ -9,16 +9,15 @@ const Navbar = () => {
 
     const links = <>
 
-        <NavLink to={'/'} className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-200' : 'text-black text-xl lg:text-sm'}`}>Home</NavLink>
-        <NavLink className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-200' : 'text-black text-xl lg:text-sm'}`}>All Movies</NavLink>
-        <NavLink to={'/addMovie'} className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-200' : 'text-black text-xl lg:text-sm'}`}>Add Movie</NavLink>
-        <NavLink className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-200' : 'text-black text-xl lg:text-sm'}`}>My Favourites</NavLink>
-        <NavLink to={'/register'} className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-200' : 'text-black text-xl lg:text-sm'}`}>Register</NavLink>
+        <NavLink to={'/'} className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>Home</NavLink>
+        <NavLink className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>All Movies</NavLink>
+        <NavLink to={'/addMovie'} className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>Add Movie</NavLink>
+        <NavLink className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>My Favourites</NavLink>
+        <NavLink to={'/register'} className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>Register</NavLink>
         <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="px-4 py-2 rounded text-3xl lg:text-2xl"
         >
-            {theme === "dark" ? <MdWbTwilight /> : <MdDarkMode />}
+            {theme === "dark" ? <MdWbTwilight className="mx-auto text-5xl lg:text-3xl"/> : <MdDarkMode className="mx-auto text-4xl lg:text-2xl"/>}
         </button>
     </>
 

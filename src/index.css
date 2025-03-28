@@ -5,10 +5,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+/* @layer base {
 
     .dark{
         background-color: #333;
         color: white;
     }
-}
+} */
