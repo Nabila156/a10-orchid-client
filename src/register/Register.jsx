@@ -1,23 +1,38 @@
 import { HiArrowNarrowLeft } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
+import { toast } from "react-toastify";
 
 const Register = () => {
+    const navigate = useNavigate();
+    const { createUser, setUser, setLoading } = useContext(AuthContext);
 
     const {
         register,
         formState: { errors },
         handleSubmit,
     } = useForm()
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => {
+        console.log(data)
 
-    createUserWithEmailAndPassword(email, password)
-        .then(result => {
-            console.log(result.user)
-        })
-        .catch(error => {
-            console.log('error', error)
-        })
+        const email = data.email;
+        const password = data.password;
+
+        createUser(email, password)
+            .then((result) => {
+                const user = result.user;
+                setUser(user);
+                navigate('/');
+            })
+            .catch((error) => {
+                toast.error(error.message);
+            })
+            .finally(() => {
+                setLoading(false);
+            })
+    }
 
     return (
         <div className="bg-cover min-h-screen bg-[url(https://i.ibb.co.com/33Qhg2N/adrien-brun-P7y-Rvz-Olp-U-unsplash.jpg)]">
