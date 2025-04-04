@@ -39,7 +39,7 @@ const Register = () => {
     }
 
     return (
-        <div className="bg-cover bg-center min-h-screen bg-[url('https://i.ibb.co.com/33Qhg2N/adrien-brun-P7y-Rvz-Olp-U-unsplash.jpg')]">
+        <div className="bg-cover font-merienda bg-center min-h-screen bg-[url('https://i.ibb.co.com/33Qhg2N/adrien-brun-P7y-Rvz-Olp-U-unsplash.jpg')]">
 
             <div className="text-white mx-[5%] pt-8 text-lg lg:text-2xl font-bold">
                 <Link to={'/'}><HiArrowNarrowLeft /></Link>
@@ -84,14 +84,14 @@ const Register = () => {
                     </div>
 
 
-                    <button className="btn font-merienda mt-2 hover:scale-95 text-base lg:text-xl transition-transform duration-300 text-blue-950 hover:text-black font-extrabold bg-gradient-to-r from-orange-700 to-blue-300 hover:from-slate-200 hover:to-slate-200">Register</button>
+                    <button className="btn mt-2 hover:scale-95 text-base lg:text-xl transition-transform duration-300 text-blue-950 hover:text-black font-extrabold bg-gradient-to-r from-orange-700 to-blue-300 hover:from-slate-200 hover:to-slate-200">Register</button>
 
-                    <p className="text-center font-merienda text-white mt-5">OR</p>
+                    <p className="text-center text-white mt-5">OR</p>
 
-                    <Link to='/' onClick={handleGoogleSignIn} className='btn mt-3 hover:scale-95 transition-transform duration-300 text-blue-950 hover:text-black text-base lg:text-xl font-merienda font-extrabold bg-gradient-to-r from-orange-700 to-blue-300 hover:from-slate-200 hover:to-slate-200'><ImGoogle />Register with Google</Link>
+                    <Link to='/' onClick={handleGoogleSignIn} className='btn mt-3 hover:scale-95 transition-transform duration-300 text-blue-950 hover:text-black text-base lg:text-xl font-extrabold bg-gradient-to-r from-orange-700 to-blue-300 hover:from-slate-200 hover:to-slate-200'><ImGoogle />Register with Google</Link>
 
 
-                    <p className='text-center font-merienda text-white pt-2'>Do you already have an account? Please <Link to='/login' className='font-bold text-orange-800'>Login</Link >.</p>
+                    <p className='text-center text-white pt-2'>Do you already have an account? Please <Link to='/login' className='font-bold text-orange-600'>Login</Link >.</p>
 
                     {
                         error && <p className='text-red-500 text-center font-bold'>{error}</p>
