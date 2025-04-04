@@ -27,7 +27,7 @@ const Navbar = () => {
             <div className="flex-1">
                 <div className="flex gap-2 items-center">
                     <img className="size-12" src="/assets/movies-app.png" alt="logo" />
-                    <a className="font-logo text-orange-700 font-extrabold text-5xl">ORCHID</a>
+                    <p className="font-logo text-orange-700 font-extrabold text-5xl">ORCHID</p>
                 </div>
             </div>
 

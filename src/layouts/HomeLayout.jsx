@@ -1,4 +1,5 @@
 import Banner from "../Banner";
+import Footer from "../Footer";
 import Navbar from "../Navbar";
 
 const HomeLayout = () => {
@@ -11,7 +12,7 @@ const HomeLayout = () => {
                 <Banner></Banner>
             </main>
             <footer>
-
+                <Footer></Footer>
             </footer>
         </div>
     );
