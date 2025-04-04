@@ -3,7 +3,8 @@ import HomeLayout from "../layouts/HomeLayout";
 import ErrorPage from "../ErrorPage";
 import AddMovieLayout from "../layouts/AddMovieLayout";
 import Register from "../register/Register";
-import Login from "../login/Login";
+import Login from "../login/login";
+import ForgotPassword from "../login/ForgotPassword";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
     {
       path: "/login",
       element: <Login></Login>,
+    },
+    {
+      path: "/forgot-password",
+      element: <ForgotPassword></ForgotPassword>,
     },
     {
         path: "*",

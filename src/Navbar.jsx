@@ -14,6 +14,7 @@ const Navbar = () => {
         <NavLink to={'/addMovie'} className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>Add Movie</NavLink>
         <NavLink className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>My Favourites</NavLink>
         <NavLink to={'/register'} className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>Register</NavLink>
+        <NavLink to={'/login'} className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>Login</NavLink>
         <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         >

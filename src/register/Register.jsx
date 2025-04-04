@@ -29,6 +29,10 @@ const Register = () => {
                 const user = result.user;
                 setUser(user);
                 navigate('/');
+
+                toast.success("Registration successful!",{
+                    draggable:true,
+                });
             })
             .catch((error) => {
                 toast.error(error.message);
@@ -71,7 +75,15 @@ const Register = () => {
 
                     <div className="relative">
                         <input type={showPassword ? "text" : "password"} placeholder="Password" className="w-full mt-2 input"
-                            {...register("password", { required: "Password is required" })}
+                            {...register("password", {
+                                required: "Password is required",
+                                validate: {
+                                    hasUppercase: (value) => /[A-Z]/.test(value) || "Password must contain at least one uppercase letter.",
+                                    hasLowercase: (value) => /[a-z]/.test(value) || "Password must contain at least one lowercase letter.",
+                                    minLength: (value) => value.length >= 6 || "Password must be at least 6 characters long."
+
+                                }
+                            })}
                             aria-invalid={errors.mail ? "true" : "false"}
                         />
                         {errors.password && <p className="text-white" role="alert">{errors.password.message}</p>}
@@ -84,14 +96,14 @@ const Register = () => {
                     </div>
 
 
-                    <button className="btn mt-2 hover:scale-95 text-base lg:text-xl transition-transform duration-300 text-blue-950 hover:text-black font-extrabold bg-gradient-to-r from-orange-700 to-blue-300 hover:from-slate-200 hover:to-slate-200">Register</button>
+                    <button className="btn mt-6 hover:scale-95 text-base lg:text-xl transition-transform duration-300 text-blue-950 hover:text-black font-extrabold bg-gradient-to-r from-orange-700 to-blue-300 hover:from-slate-200 hover:to-slate-200">Register</button>
 
                     <p className="text-center text-white mt-5">OR</p>
 
                     <Link to='/' onClick={handleGoogleSignIn} className='btn mt-3 hover:scale-95 transition-transform duration-300 text-blue-950 hover:text-black text-base lg:text-xl font-extrabold bg-gradient-to-r from-orange-700 to-blue-300 hover:from-slate-200 hover:to-slate-200'><ImGoogle />Register with Google</Link>
 
 
-                    <p className='text-center text-white pt-2'>Do you already have an account? Please <Link to='/login' className='font-bold text-orange-600'>Login</Link >.</p>
+                    <p className='text-white pt-2'>Do you already have an account? Please <Link to='/login' className='font-bold text-orange-600'>Login</Link >.</p>
 
                     {
                         error && <p className='text-red-500 text-center font-bold'>{error}</p>
