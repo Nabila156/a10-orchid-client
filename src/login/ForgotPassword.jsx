@@ -1,11 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { HiArrowNarrowLeft } from "react-icons/hi";
+import { useEffect, useState } from "react";
 
 const ForgotPassword = () => {
     const location = useLocation();
     const [email, setEmail] = useState('');
     useEffect(() => {
+        // console.log("Location state:", location.state); 
         if (location.state?.email) {
             setEmail(location.state.email);
         }
@@ -16,7 +17,7 @@ const ForgotPassword = () => {
     }
 
     return (
-        <div className="font-roboto min-h-screen relative">
+        <div className="min-h-screen relative">
             {/* Background Image with Brightness Adjustment */}
             <div
                 className="absolute inset-0 bg-[url('https://i.ibb.co.com/VpCs6SqW/images.png')] brightness-50 z-10">
@@ -35,13 +36,13 @@ const ForgotPassword = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Email"
-                            className="input input-bordered w-full" required />
+                            className="input input-bordered font-merienda w-full" required />
                     </div>
 
                     <a
                         href="https://mail.google.com"
                         target="_blank"
-                        className="btn mt-5 hover:scale-95 transition-transform duration-300 text-black text-base lg:text-xl font-extrabold bg-gradient-to-r from-pink-400 to-purple-200 hover:from-slate-200 hover:to-slate-200">Reset Password</a>
+                        className="btn font-merienda mt-5 hover:scale-95 transition-transform duration-300 text-black text-base lg:text-xl font-extrabold bg-gradient-to-r from-pink-400 to-purple-200 hover:from-slate-200 hover:to-slate-200">Reset Password</a>
 
                 </form>
             </div>

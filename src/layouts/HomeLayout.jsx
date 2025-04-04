@@ -1,3 +1,4 @@
+import Banner from "../Banner";
 import Navbar from "../Navbar";
 
 const HomeLayout = () => {
@@ -7,7 +8,7 @@ const HomeLayout = () => {
                 <Navbar></Navbar>
             </nav>
             <main className="flex-grow">
-
+                <Banner></Banner>
             </main>
             <footer>
 

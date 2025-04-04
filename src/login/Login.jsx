@@ -20,6 +20,7 @@ const Login = () => {
         register,
         formState: { errors },
         handleSubmit,
+        getValues
     } = useForm()
     const onSubmit = (data) => {
         // console.log(data)
@@ -43,12 +44,11 @@ const Login = () => {
             .finally(() => {
                 setLoading(false);
             });
-
-
-    }
+    };
 
     const handleForgetPassword = () => {
-        const email = emailRef.current?.value;
+        const email = getValues("email");
+        // console.log("Email before navigating:", email);
         navigate("/forgot-password", { state: { email } });
     };
 
@@ -64,7 +64,9 @@ const Login = () => {
                     </div>
                     <form className=" flex flex-col py-12" onSubmit={handleSubmit(onSubmit)}>
                         <p className="text-center text-white mb-6 font-extrabold text-2xl md:text-4xl">Access Your Cinematic Universe</p>
-                        <input type="email" placeholder="Email" className="w-full mt-2 input"
+                        <input type="email"
+                            placeholder="Email"
+                            className="w-full mt-2 input"
                             {...register("email", { required: "Email Address is required" })}
                             aria-invalid={errors.email ? "true" : "false"}
                         />
@@ -78,7 +80,7 @@ const Login = () => {
                             />
 
                             <label onClick={handleForgetPassword} className="label">
-                                <p to={'/forgot-password'} className="link link-hover text-xs text-slate-300">Forgot password?</p>
+                                <p to={'/forgot-password'} className="link link-hover text-xs text-white">Forgot password?</p>
                             </label>
 
                             {errors.password && <p className="text-white" role="alert">{errors.password.message}</p>}
