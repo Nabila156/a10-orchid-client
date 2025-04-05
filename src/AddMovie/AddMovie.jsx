@@ -38,6 +38,38 @@ const AddMovie = () => {
             return;
         }
 
+        // Validation for duration
+        if (duration <= 60) {
+            toast.error("Duration must be greater than 60 minutes.", {
+                position: "top-center",
+                autoClose: 3000,
+                theme: "dark"
+            });
+            return;
+        }
+
+        // Validation for summary
+
+        if (summary.length < 10) {
+            toast.error("Summary must be at least 10 characters long!", {
+                position: "top-center",
+                autoClose: 3000,
+                theme: "dark"
+            });
+            return;
+        }
+
+
+        if (rating === 0 ) {
+            toast.error("You must select a rating to add a movie.", {
+                position: "top-center",
+                autoClose: 3000,
+                theme: "dark"
+            });
+            return;
+
+        }
+
 
         // send data to the server
         fetch('http://localhost:5000/movies', {
@@ -97,15 +129,26 @@ const AddMovie = () => {
                                             </select>
                                         </div>
                                         <div className="flex flex-col w-1/2">
-                                            <label className="fieldset-label hidden md:block">Duration</label>
-                                            <input type="text" name="duration" className="input w-full" placeholder="Duration" required />
+                                            <label className="fieldset-label hidden md:block">Duration(mins)</label>
+                                            <input type="number" name="duration" className="input w-full" placeholder="Duration" required />
                                         </div>
                                     </div>
 
                                     <div className="flex gap-8">
                                         <div className="flex flex-col w-1/2">
                                             <label className="fieldset-label hidden md:block">Release Year</label>
-                                            <input type="text" name="year" className="input w-full" placeholder="Release Year" required />
+                                            <select name="year" className="input w-full text-gray-400" required>
+                                                <option value="" disabled hidden>Release Year</option>
+                                                <option value="2025">2025</option>
+                                                <option value="2024">2024</option>
+                                                <option value="2023">2023</option>
+                                                <option value="2022">2022</option>
+                                                <option value="2021">2021</option>
+                                                <option value="2020">2020</option>
+                                                <option value="2019">2019</option>
+                                                <option value="2018">2018</option>
+                                                <option value="2017">2017</option>
+                                            </select>
                                         </div>
                                         <div className="flex flex-col w-1/2">
                                             <label className="fieldset-label hidden md:block">Summary</label>
@@ -123,6 +166,7 @@ const AddMovie = () => {
                                         ratingValue={rating} // Set the current rating value
                                         fillColor="#ffd700"
                                         allowHalfIcon
+                                        required
                                     />
                                 </div>
                             </div>
