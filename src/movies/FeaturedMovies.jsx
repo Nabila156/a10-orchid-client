@@ -1,4 +1,5 @@
 import { useTheme } from "next-themes";
+import FeaturedMovieCard from "./FeaturedMovieCard";
 
 const FeaturedMovies = ({ movies }) => {
 
@@ -7,36 +8,38 @@ const FeaturedMovies = ({ movies }) => {
 
     return (
         <div className="font-roboto mt-8">
-            <h1 className={`text-center font-extrabold text-black text-2xl md:text-4xl ${theme === 'dark' ? 'text-white' : ''}`}>Featured Movies:{movies.length}</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-//         {movies.map(movie => (
-                <div
-                    key={movie._id}
-                    className={`p-4 rounded-lg shadow-lg ${theme === 'dark' ? 'bg-purple-100' : 'bg-white'
-                        }`}
-                >
-                    <img
-                        src={movie.poster}
-                        alt={movie.title}
-                        className="w-full h-64 object-cover rounded-t-lg"
-                    />
-                    <div className="p-4">
-                        <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-800'
-                            }`}>
-                            {movie.title}
-                        </h3>
-                        <p className={`mt-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-                            }`}>
-                            Genre: {movie.genre}
-                        </p>
-                        <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-                            Rating: {movie.rating}/5
-                        </p>
-                    </div>
-                </div>
-            ))}
+            <h1 className={`text-center font-extrabold text-black text-2xl md:text-4xl ${theme === 'dark' ? 'text-white' : ''}`}>Featured Movies</h1>
+            <div className='my-12 mx-12 grid gap-y-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+               { movies.map((movie, index) => <FeaturedMovieCard key={index} movie={movie}></FeaturedMovieCard>)}
             </div>
-//
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+                {movies.map(movie => (
+                    <div
+                        key={movie._id}
+                        className={`p-4 rounded-lg shadow-lg ${theme === 'dark' ? 'bg-purple-100' : 'bg-white'
+                            }`}
+                    >
+                        <img
+                            src={movie.poster}
+                            alt={movie.title}
+                            className="w-full h-64 object-cover rounded-t-lg"
+                        />
+                        <div className="p-4">
+                            <h3 className={`text-xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-800'
+                                }`}>
+                                {movie.title}
+                            </h3>
+                            <p className={`mt-2 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                                }`}>
+                                Genre: {movie.genre}
+                            </p>
+                            <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                                Rating: {movie.rating}/5
+                            </p>
+                        </div>
+                    </div>
+                ))}
+            </div> */}
         </div>
     );
 };

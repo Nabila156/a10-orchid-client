@@ -60,7 +60,7 @@ const AddMovie = () => {
         }
 
 
-        if (rating === 0 ) {
+        if (rating === 0) {
             toast.error("You must select a rating to add a movie.", {
                 position: "top-center",
                 autoClose: 3000,
@@ -85,12 +85,19 @@ const AddMovie = () => {
 
                 Swal.fire({
                     title: 'Congratulations!',
-                    text: 'User added successfully',
+                    text: 'Movie added successfully',
                     icon: 'success',
                     confirmButtonText: 'Ok'
                 })
             })
+
+             // Reset form fields and rating after successful submission
+             form.reset(); 
+             setRating(0); 
+
     }
+
+
     return (
         <div>
             <p className="text-4xl text-center py-8 font-bold">Add Your Movie</p>
@@ -150,11 +157,11 @@ const AddMovie = () => {
                                                 <option value="2017">2017</option>
                                             </select>
                                         </div>
-                                        <div className="flex flex-col w-1/2">
-                                            <label className="fieldset-label hidden md:block">Summary</label>
-                                            <input type="text" name="summary" className="input w-full" placeholder="Summary" required />
-                                        </div>
 
+                                    </div>
+                                    <div className="flex flex-col w-1/2">
+                                        <label className="fieldset-label hidden md:block">Summary</label>
+                                        <textarea type="text" name='summary' className="textarea w-full" placeholder="Summary" required></textarea>
                                     </div>
 
                                 </div>

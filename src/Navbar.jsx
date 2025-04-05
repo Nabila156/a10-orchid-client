@@ -23,7 +23,7 @@ const Navbar = () => {
     </>
 
     return (
-        <div className={`sticky top-0 z-50 ${theme === 'dark' ? 'dark' : ''} navbar bg-base-100 shadow-sm px-8 pt-8`}>
+        <div className={`${theme === 'dark' ? 'dark' : ''} navbar bg-base-100 shadow-sm px-8 pt-8`}>
             <div className="flex-1">
                 <div className="flex gap-2 items-center">
                     <img className="size-12" src="/assets/movies-app.png" alt="logo" />
