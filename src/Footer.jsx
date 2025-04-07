@@ -1,9 +1,8 @@
-import React from 'react';
 
 const Footer = () => {
     return (
-        <div>
-            <footer className="bg-[#7151AC] text-white md:pl-[45px] mt-10 footer sm:footer-horizontal p-10">
+        <div className='bg-[#7151AC]'>
+            <footer className=" text-white md:pl-[45px] mt-10 footer sm:footer-horizontal p-10">
                 <nav>
                     <h6 className="footer-title">Useful Links</h6>
                     <a className="link link-hover">About</a>
@@ -36,7 +35,7 @@ const Footer = () => {
                     <a className="link link-hover">FAQ</a>
                 </nav>
             </footer>
-            <footer className="bg-[#7151AC]  px-12 md:px-[45px] flex flex-col md:flex-row justify-between footer text-white">
+            <footer className="  px-12 md:px-[45px] flex flex-col md:flex-row justify-between footer text-white">
                 <aside className="flex flex-col md:flex-row">
                     <img className='size-12' src="/assets/movies-app.png" alt="logo" />
                     <div className='flex flex-col'>

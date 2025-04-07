@@ -23,6 +23,8 @@ const Register = () => {
 
         const email = data.email;
         const password = data.password;
+        const displayName = data.name;
+        const photoURL = data.photoURL
 
         createUser(email, password)
             .then((result) => {

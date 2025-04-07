@@ -3,30 +3,29 @@ import { NavLink } from "react-router-dom";
 import { MdDarkMode, MdWbTwilight } from "react-icons/md";
 import { useContext } from "react";
 import { AuthContext } from "./providers/AuthProvider";
-import { IoMdLogOut } from "react-icons/io";
-import { AiOutlineLogin } from "react-icons/ai";
-import { FaRegUser } from "react-icons/fa";
+import { FaBars, FaRegUser } from "react-icons/fa";
 
 
 const Navbar = () => {
 
     const { theme, setTheme } = useTheme();
     const { user, userLogOut } = useContext(AuthContext);
+    console.log(user)
 
     const links = <>
 
-        <NavLink to={'/'} className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>Home</NavLink>
-        <NavLink className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>All Movies</NavLink>
-        <NavLink to={'/addMovie'} className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>Add Movie</NavLink>
-        <NavLink className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>My Favourites</NavLink>
-        <NavLink to={'/register'} className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>Register</NavLink>
+        <NavLink to={'/'} className={({ isActive }) => `font-bold mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>Home</NavLink>
+        <NavLink to={'/allMovies'} className={({ isActive }) => `font-bold mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>All Movies</NavLink>
+        <NavLink to={'/addMovie'} className={({ isActive }) => `font-bold mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>Add Movie</NavLink>
+        <NavLink className={({ isActive }) => `font-bold mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>My Favourites</NavLink>
+        <NavLink to={'/register'} className={({ isActive }) => `font-bold mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>Register</NavLink>
         {
-            user && user?.email ? <NavLink onClick={userLogOut} className={`font-bold ${theme === "dark" ? "text-white" : ""} }`}>Logout</NavLink>
-                : <NavLink to={'/login'} className={`font-bold ${theme === "dark" ? "text-white" : ""} }`}>Login</NavLink>
+            user && user?.email ? <NavLink onClick={userLogOut} className={({ isActive }) => `font-bold mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}  ${theme === "dark" ? "text-white" : ""} }`}>Logout</NavLink>
+                : <NavLink to={'/login'} className={({ isActive }) => `font-bold mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}  ${theme === "dark" ? "text-white" : ""} }`}>Login</NavLink>
 
         }
-        {/* <NavLink to={'/login'} className={({ isActive }) => `font-bold ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>Login</NavLink> */}
-        <button
+
+        <button className=" hover:scale-125 transform transition duration-300"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         >
             {theme === "dark" ? <MdWbTwilight className="mx-auto text-5xl lg:text-3xl" /> : <MdDarkMode className="mx-auto text-4xl lg:text-2xl" />}
@@ -34,9 +33,9 @@ const Navbar = () => {
 
         {
             user && user?.email ?
-                <div>
+                <div className="mx-auto group">
                     {
-                        user?.photoURL ? <img src={user?.photoURL} alt="user" />
+                        user?.photoURL ? <img className="h-20 w-20 rounded-full" src={user?.photoURL} alt="user" />
                             : <FaRegUser className='size-6' />
                     }
                     <p className='font-bold font-gummy text-xl opacity-0 group-hover:opacity-100 text-center'>{user?.displayName?.split(' ')[0]}</p>
@@ -63,21 +62,8 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="block lg:hidden btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            {
-                                user && user?.email ?
-                                    <div>
-                                        {
-                                            user?.photoURL ? <img src={user?.photoURL} alt="user" />
-                                                : <FaRegUser className='size-6' />
-                                        }
-                                        <p className='font-bold font-gummy text-xl opacity-0 group-hover:opacity-100 text-center'>{user?.displayName?.split(' ')[0]}</p>
-                                    </div>
-                                    : ''
-
-                            }
-                        </div>
+                    <div tabIndex={0} role="button" className="block lg:hidden btn btn-ghost">
+                        <FaBars className="size-6" />
                     </div>
                     <ul
                         tabIndex={0}

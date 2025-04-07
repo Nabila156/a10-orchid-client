@@ -6,12 +6,18 @@ import Register from "../register/Register";
 import Login from "../login/login";
 import ForgotPassword from "../login/ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
+import AllMovies from "../movies/AllMovies";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
     loader: () => fetch('http://localhost:5000/featured')
+  },
+  {
+    path: "/allMovies",
+    element: <AllMovies></AllMovies>,
+    loader: () => fetch('http://localhost:5000/movies')
   },
   {
     path: "/addMovie",
