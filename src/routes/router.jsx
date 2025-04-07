@@ -5,6 +5,7 @@ import AddMovieLayout from "../layouts/AddMovieLayout";
 import Register from "../register/Register";
 import Login from "../login/login";
 import ForgotPassword from "../login/ForgotPassword";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -12,22 +13,13 @@ const router = createBrowserRouter([
     element: <HomeLayout></HomeLayout>,
     loader: () => fetch('http://localhost:5000/featured')
   },
-  // {
-  //   path: "/featuredMovies",
-  //   element: <FeaturedMovies></FeaturedMovies>,
-  //   loader:()=>fetch('http://localhost:5000/featured')
-  //   //  async () => {
-  //   //   const res = await fetch('http://localhost:5000/featured');
-  //   //   const data= await res.json()
-  //   //   if (!res.ok) {
-  //   //     throw new Error("Failed ti fetch featured movies");
-  //   //   }
-  //   //   return data;
-  //   // }
-  // }
   {
     path: "/addMovie",
-    element: <AddMovieLayout></AddMovieLayout>,
+    element:
+      <PrivateRoute>
+        <AddMovieLayout></AddMovieLayout>
+      </PrivateRoute>
+    ,
   },
   {
     path: "/register",

@@ -1,9 +1,9 @@
 
 
-const FeaturedMovieCard = ({ movie }) => {
+const MovieCard = ({ movie }) => {
     const { title, poster, genre, duration, year, rating } = movie;
     return (
-        <div className="card card-compact rounded-none shadow-lg border w-72 hover:scale-105 transform transition duration-300">
+        <div className="card card-compact bg-purple-100 rounded-none shadow-lg border min-w-72 w-full hover:scale-105 transform transition duration-300">
             <img src={poster} alt={title} className="w-full h-2/3 object-cover" />
             <div className="p-4">
                 <div className="flex-grow overflow-auto h-24">
@@ -20,4 +20,4 @@ const FeaturedMovieCard = ({ movie }) => {
     );
 };
 
-export default FeaturedMovieCard;
+export default MovieCard;
