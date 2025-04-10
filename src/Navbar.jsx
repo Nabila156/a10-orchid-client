@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { MdDarkMode, MdWbTwilight } from "react-icons/md";
 import { useContext } from "react";
 import { AuthContext } from "./providers/AuthProvider";
-import { FaBars, FaRegUser } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 
 
 const Navbar = () => {
@@ -35,10 +35,10 @@ const Navbar = () => {
             user && user?.email ?
                 <div className="mx-auto group">
                     {
-                        user?.photoURL ? <img className="h-20 w-20 rounded-full" src={user?.photoURL} alt="user" />
-                            : <FaRegUser className='size-6' />
+                        user?.photoURL ? <img className="h-20 w-20 rounded-full" src={user?.photoURL} alt="user" /> : ""
                     }
                     <p className='font-bold font-gummy text-xl opacity-0 group-hover:opacity-100 text-center'>{user?.displayName?.split(' ')[0]}</p>
+
                 </div>
                 : ''
 

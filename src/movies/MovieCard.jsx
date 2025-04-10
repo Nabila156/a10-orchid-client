@@ -14,7 +14,7 @@ const MovieCard = ({ movie }) => {
                     <p><strong>Year:</strong> {year}</p>
                     <p><strong>Rating:</strong> {rating}</p>
                 </div>
-                <button className="btn btn-sm font-bold text-base hover:scale-90 transition-transform duration-300 text-black bg-gradient-to-r from-purple-600 to-orange-600 mt-auto w-full">See Details</button>
+                <button className="btn btn-sm font-bold text-base hover:scale-90 transition-transform duration-300 text-black bg-purple-300 mt-auto w-full">See Details</button>
             </div>
         </div>
     );

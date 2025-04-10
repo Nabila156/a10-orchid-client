@@ -10,7 +10,7 @@ import { ImGoogle } from "react-icons/im";
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
-    const { createUser, setUser, setLoading, handleGoogleSignIn } = useContext(AuthContext);
+    const { createUser, setUser, setLoading, handleGoogleSignIn, updateUserProfile } = useContext(AuthContext);
     const [error, setError] = useState('');
 
     const {
@@ -19,29 +19,29 @@ const Register = () => {
         handleSubmit,
     } = useForm()
     const onSubmit = (data) => {
-        // console.log(data)
+        console.log(data)
 
         const email = data.email;
         const password = data.password;
         const displayName = data.name;
-        const photoURL = data.photoURL
+        const photoURL = data.photoURL;
 
         createUser(email, password)
             .then((result) => {
                 const user = result.user;
                 setUser(user);
+                return updateUserProfile({ displayName, photoURL }); // Wait for this to finish
+            })
+            .then(() => {  // navigate after profile is updated
                 navigate('/');
-
-                toast.success("Registration successful!",{
-                    draggable:true,
-                });
+                toast.success("Registration successful!");
             })
             .catch((error) => {
                 toast.error(error.message);
             })
             .finally(() => {
                 setLoading(false);
-            })
+            });
     }
 
     return (
@@ -70,10 +70,10 @@ const Register = () => {
                     {errors.email && <p className="text-white" role="alert">{errors.email.message}</p>}
 
                     <input type="url" placeholder="Photo-URL" className="w-full mt-2 input"
-                        {...register("photoUrl", { required: "Photo-URL is required" })}
-                        aria-invalid={errors.mail ? "true" : "false"}
+                        {...register("photoURL", { required: "Photo-URL is required" })}
+                        aria-invalid={errors.photoURL ? "true" : "false"}
                     />
-                    {errors.photoUrl && <p className="text-white" role="alert">{errors.photoUrl.message}</p>}
+                    {errors.photoURL && <p className="text-white" role="alert">{errors.photoURL.message}</p>}
 
                     <div className="relative">
                         <input type={showPassword ? "text" : "password"} placeholder="Password" className="w-full mt-2 input"
@@ -86,7 +86,7 @@ const Register = () => {
 
                                 }
                             })}
-                            aria-invalid={errors.mail ? "true" : "false"}
+                            aria-invalid={errors.password ? "true" : "false"}
                         />
                         {errors.password && <p className="text-white" role="alert">{errors.password.message}</p>}
 
