@@ -14,14 +14,14 @@ const Navbar = () => {
 
     const links = <>
 
-        <NavLink to={'/'} className={({ isActive }) => `font-bold mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>Home</NavLink>
-        <NavLink to={'/allMovies'} className={({ isActive }) => `font-bold mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>All Movies</NavLink>
-        <NavLink to={'/addMovie'} className={({ isActive }) => `font-bold mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>Add Movie</NavLink>
-        <NavLink className={({ isActive }) => `font-bold mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>My Favourites</NavLink>
-        <NavLink to={'/register'} className={({ isActive }) => `font-bold mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}`}>Register</NavLink>
+        <NavLink to={'/'} className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 border-2 border-orange-700 p-1 rounded' : 'text-black'}`}>Home</NavLink>
+        <NavLink to={'/allMovies'} className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 border-2  p-1 rounded border-b border-orange-400' : 'text-black'}`}>All Movies</NavLink>
+        <NavLink to={'/addMovie'} className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 border-2 p-1 rounded border-orange-700' : 'text-black'}`}>Add Movie</NavLink>
+        <NavLink className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-2 border-orange-700 p-1 rounded' : 'text-black'}`}>My Favourites</NavLink>
+        <NavLink to={'/register'} className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 border-2  p-1 rounded  border-b border-orange-400' : 'text-black'}`}>Register</NavLink>
         {
-            user && user?.email ? <NavLink onClick={userLogOut} className={({ isActive }) => `font-bold mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}  ${theme === "dark" ? "text-white" : ""} }`}>Logout</NavLink>
-                : <NavLink to={'/login'} className={({ isActive }) => `font-bold mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${isActive ? 'text-purple-700 text-xl lg:text-lg border-b border-orange-400' : 'text-black text-xl lg:text-sm'}  ${theme === "dark" ? "text-white" : ""} }`}>Login</NavLink>
+            user && user?.email ?
+                "" : <NavLink to={'/login'} className="font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300">Login</NavLink>
 
         }
 
@@ -37,8 +37,8 @@ const Navbar = () => {
                     {
                         user?.photoURL ? <img className="h-14 w-14 rounded-full" src={user?.photoURL} alt="user" /> : ""
                     }
-                    <p className='font-bold font-gummy text-xl opacity-0 group-hover:opacity-100 text-center'>{user?.displayName?.split(' ')[0]}</p>
-
+                    <p className={`${theme === "dark" ? "text-purple-300" : "text-purple-700"} font-bold font-hand_writing text-xl opacity-0 group-hover:opacity-100 text-center`}>{user?.displayName?.split(' ')[0]}</p>
+                    <NavLink onClick={userLogOut} className="font-bold text-xl lg:text-lg opacity-0 group-hover:opacity-100 hover:scale-125 transform transition duration-300">Logout</NavLink>
                 </div>
                 : ''
 

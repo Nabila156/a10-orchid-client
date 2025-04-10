@@ -11,7 +11,7 @@ const MovieCard = ({ movie }) => {
                     <p className="text-gray-600 text-sm mt-1">{genre}</p>
                 </div>
                 <div className="text-gray-700 text-sm space-y-1">
-                    <p><strong>Duration:</strong> {duration}</p>
+                    <p><strong>Duration:</strong> {duration} minutes</p>
                     <p><strong>Year:</strong> {year}</p>
                     <p><strong>Rating:</strong> {rating}</p>
                 </div>

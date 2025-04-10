@@ -1,13 +1,48 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { HiArrowNarrowLeft } from "react-icons/hi";
+import Swal from "sweetalert2";
 
 const MovieDetails = () => {
 
     const { loading } = useContext(AuthContext);
+    const navigate = useNavigate();
     const movie = useLoaderData();
-    const { title, poster, genre, duration, year, rating, summary } = movie;
+    const { _id, title, poster, genre, duration, year, rating, summary } = movie;
+    const handleDelete = _id => {
+        // console.log(_id)
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/movie/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+                    .then(navigate('/allMovies'))
+
+                // console.log('delete confirmed')
+            }
+        });
+    }
+
 
     if (loading) {
         return <div className="flex justify-center items-center min-h-screen"><span className="loading loading-ring loading-xs"></span>
@@ -48,11 +83,11 @@ const MovieDetails = () => {
 
                             {/* Action Buttons */}
                             <div className="flex flex-wrap gap-4 mt-6">
-                                <button className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg transition-all">
+                                <button onClick={() => handleDelete(_id)} className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg transition-all">
                                     🗑️ Delete Movie
                                 </button>
                                 <button className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-lg transition-all">
-                                    ⭐ Add to Favorite
+                                    ❤️ Add to Favorite
                                 </button>
                             </div>
                         </div>

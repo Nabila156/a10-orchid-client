@@ -178,7 +178,7 @@ const AddMovie = () => {
                                 </div>
                             </div>
 
-                            <button className="btn btn-neutral mt-4">Add Movie</button>
+                            <button className="btn btn-neutral text-xl mt-4">Add Movie</button>
                         </fieldset>
                     </form>
                 </div>
