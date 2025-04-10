@@ -14,14 +14,22 @@ const Navbar = () => {
 
     const links = <>
 
-        <NavLink to={'/'} className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 border-2 border-orange-700 p-1 rounded' : 'text-black'}`}>Home</NavLink>
-        <NavLink to={'/allMovies'} className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 border-2  p-1 rounded border-b border-orange-400' : 'text-black'}`}>All Movies</NavLink>
+        <NavLink to={'/'} className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 border-2 p-1 rounded border-orange-700' : 'text-black'}`}>Home</NavLink>
+        <NavLink to={'/allMovies'} className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 border-2  p-1 rounded border-orange-700' : 'text-black'}`}>All Movies</NavLink>
         <NavLink to={'/addMovie'} className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 border-2 p-1 rounded border-orange-700' : 'text-black'}`}>Add Movie</NavLink>
-        <NavLink className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 text-xl lg:text-lg border-2 border-orange-700 p-1 rounded' : 'text-black'}`}>My Favourites</NavLink>
-        <NavLink to={'/register'} className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 border-2  p-1 rounded  border-b border-orange-400' : 'text-black'}`}>Register</NavLink>
+        <NavLink className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700  border-2 border-orange-700 p-1 rounded' : 'text-black'}`}>My Favourites</NavLink>
+
         {
             user && user?.email ?
-                "" : <NavLink to={'/login'} className="font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300">Login</NavLink>
+                "" : <NavLink to={'/register'} className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 border-2  p-1 rounded  border-b border-orange-700' : 'text-black'}`}>Register</NavLink>
+
+
+        }
+
+        {
+            user && user?.email ?
+                "" : <NavLink to={'/login'} className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 border-2  p-1 rounded  border-b border-orange-700' : 'text-black'}`}>Login</NavLink>
+       
 
         }
 
@@ -44,6 +52,10 @@ const Navbar = () => {
 
         }
     </>
+
+
+
+
 
     return (
         <div className={`${theme === 'dark' ? 'dark' : ''} navbar bg-base-100 shadow-sm px-8 pt-8`}>

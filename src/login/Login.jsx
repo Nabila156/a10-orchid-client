@@ -3,7 +3,6 @@ import { AuthContext } from "../providers/AuthProvider";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { PiEyeLight, PiEyeSlashLight } from "react-icons/pi";
-import { HiArrowNarrowLeft } from "react-icons/hi";
 import { ImGoogle } from "react-icons/im";
 import { toast } from "react-toastify";
 
@@ -55,13 +54,10 @@ const Login = () => {
 
 
     return (
-        <div className="lg:bg-none font-merienda bg-cover bg-center min-h-screen bg-[url('https://i.ibb.co.com/Dn3JHMf/Myke-simon-ats-Uq-Im3wxo-unsplash.jpg')]">
+        <div className="lg:bg-none font-merienda bg-cover bg-center bg-[url('https://i.ibb.co.com/Dn3JHMf/Myke-simon-ats-Uq-Im3wxo-unsplash.jpg')]">
 
             <div className="flex lg:flex-row backdrop-blur-sm">
                 <div className="w-full lg:w-[60%] lg:bg-black px-[5%]">
-                    <div className="text-white pt-8 text-lg lg:text-2xl font-bold">
-                        <Link to={'/'}><HiArrowNarrowLeft /></Link>
-                    </div>
                     <form className=" flex flex-col py-12" onSubmit={handleSubmit(onSubmit)}>
                         <p className="text-center text-white mb-6 font-extrabold text-2xl md:text-4xl">Access Your Cinematic Universe</p>
                         <input type="email"

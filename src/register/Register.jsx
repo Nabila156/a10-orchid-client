@@ -1,4 +1,4 @@
-import { HiArrowNarrowLeft } from "react-icons/hi";
+
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
@@ -45,11 +45,7 @@ const Register = () => {
     }
 
     return (
-        <div className="bg-cover font-merienda bg-center min-h-screen bg-[url('https://i.ibb.co.com/33Qhg2N/adrien-brun-P7y-Rvz-Olp-U-unsplash.jpg')]">
-
-            <div className="text-white mx-[5%] pt-8 text-lg lg:text-2xl font-bold">
-                <Link to={'/'}><HiArrowNarrowLeft /></Link>
-            </div>
+        <div className="bg-cover py-32 font-merienda bg-center  bg-[url('https://i.ibb.co.com/33Qhg2N/adrien-brun-P7y-Rvz-Olp-U-unsplash.jpg')]">
 
             <div className="ml-[40%] mr-[5%]">
                 <p className="text-white font-merienda font-extrabold text-2xl md:text-4xl">Register & Start Watching!</p>

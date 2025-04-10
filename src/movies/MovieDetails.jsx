@@ -1,14 +1,10 @@
-import { useContext } from "react";
-import { AuthContext } from "../providers/AuthProvider";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
-import { HiArrowNarrowLeft } from "react-icons/hi";
+
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const MovieDetails = () => {
+const MovieDetails = ({ movie }) => {
 
-    const { loading } = useContext(AuthContext);
     const navigate = useNavigate();
-    const movie = useLoaderData();
     const { _id, title, poster, genre, duration, year, rating, summary } = movie;
     const handleDelete = _id => {
         // console.log(_id)
@@ -44,18 +40,8 @@ const MovieDetails = () => {
     }
 
 
-    if (loading) {
-        return <div className="flex justify-center items-center min-h-screen"><span className="loading loading-ring loading-xs"></span>
-            <span className="loading loading-ring loading-sm"></span>
-            <span className="loading loading-ring loading-md"></span>
-            <span className="loading loading-ring loading-lg"></span></div>
-    }
-
     return (
-        <div className="min-h-screen bg-gray-100 ">
-            <div className="text-black mx-[5%] pt-8 text-lg lg:text-2xl font-bold">
-                <Link to={'/allMovies'}><HiArrowNarrowLeft /></Link>
-            </div>
+        <div className="bg-gray-100 ">
             <div className="flex items-center justify-center p-6">
                 <div className="bg-white shadow-xl rounded-2xl max-w-4xl w-full flex flex-col md:flex-row overflow-hidden">
                     {/* Poster */}

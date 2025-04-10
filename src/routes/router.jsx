@@ -2,12 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import HomeLayout from "../layouts/HomeLayout";
 import ErrorPage from "../ErrorPage";
 import AddMovieLayout from "../layouts/AddMovieLayout";
-import Register from "../register/Register";
 import Login from "../login/login";
 import ForgotPassword from "../login/ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
-import AllMovies from "../movies/AllMovies";
-import MovieDetails from "../movies/MovieDetails";
+import MovieDetailsLayout from "../layouts/MovieDetailsLayout";
+import AllMoviesLayout from "../layouts/AllMoviesLayout";
+import RegisterLayout from "../layouts/RegisterLayout";
+import LoginLayout from "../layouts/LoginLayout";
 
 const router = createBrowserRouter([
   {
@@ -17,12 +18,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/allMovies",
-    element: <AllMovies></AllMovies>,
+    element: <AllMoviesLayout></AllMoviesLayout>,
     loader: () => fetch('http://localhost:5000/movies')
   },
   {
     path: "/movie/:id",
-    element: <MovieDetails></MovieDetails>,
+    element: <MovieDetailsLayout></MovieDetailsLayout>,
     loader: ({params}) => fetch(`http://localhost:5000/movie/${params.id}`)
   },
   {
@@ -35,11 +36,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/register",
-    element: <Register></Register>,
+    element: <RegisterLayout></RegisterLayout>,
   },
   {
     path: "/login",
-    element: <Login></Login>,
+    element: <LoginLayout></LoginLayout>,
   },
   {
     path: "/forgot-password",

@@ -1,16 +1,18 @@
-import AddMovie from "../AddMovie/AddMovie";
+import { useLoaderData } from "react-router-dom";
 import Footer from "../Footer";
+import AllMovies from "../movies/AllMovies";
 import Navbar from "../Navbar";
 
+const AllMoviesLayout = () => {
+    const movies = useLoaderData();
 
-const AddMovieLayout = () => {
     return (
         <div className="font-roboto min-h-screen flex flex-col">
             <nav>
                 <Navbar></Navbar>
             </nav>
             <main className="flex-grow">
-                <AddMovie></AddMovie>
+                <AllMovies movies={movies}></AllMovies>
             </main>
             <footer>
                 <Footer></Footer>
@@ -19,4 +21,4 @@ const AddMovieLayout = () => {
     );
 };
 
-export default AddMovieLayout;
+export default AllMoviesLayout;

@@ -2,7 +2,7 @@
 const Footer = () => {
     return (
         <div className='bg-[#7151AC]'>
-            <footer className=" text-white md:pl-[45px] mt-10 footer sm:footer-horizontal p-10">
+            <footer className=" text-white md:pl-[45px] footer sm:footer-horizontal p-10">
                 <nav>
                     <h6 className="footer-title">Useful Links</h6>
                     <a className="link link-hover">About</a>

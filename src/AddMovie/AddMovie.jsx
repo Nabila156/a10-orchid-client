@@ -99,8 +99,8 @@ const AddMovie = () => {
 
 
     return (
-        <div>
-            <p className="text-4xl text-center py-8 font-bold">Add Your Movie</p>
+        <div className='bg-gray-100 pb-10'>
+            <p className="text-4xl text-center text-black py-8 font-bold">Add Your Movie</p>
             <div className="hero px-10">
                 <div className="card w-full bg-base-100 shadow-2xl">
                     <form onSubmit={handleAddMovie} className="card-body">
