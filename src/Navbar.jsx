@@ -10,7 +10,7 @@ const Navbar = () => {
 
     const { theme, setTheme } = useTheme();
     const { user, userLogOut } = useContext(AuthContext);
-    console.log(user)
+    // console.log(user)
 
     const links = <>
 
@@ -35,7 +35,7 @@ const Navbar = () => {
             user && user?.email ?
                 <div className="mx-auto group">
                     {
-                        user?.photoURL ? <img className="h-20 w-20 rounded-full" src={user?.photoURL} alt="user" /> : ""
+                        user?.photoURL ? <img className="h-14 w-14 rounded-full" src={user?.photoURL} alt="user" /> : ""
                     }
                     <p className='font-bold font-gummy text-xl opacity-0 group-hover:opacity-100 text-center'>{user?.displayName?.split(' ')[0]}</p>
 

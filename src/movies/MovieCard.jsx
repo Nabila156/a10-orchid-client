@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie }) => {
-    const { title, poster, genre, duration, year, rating } = movie;
+    const { _id, title, poster, genre, duration, year, rating } = movie;
     return (
         <div className="flex flex-col bg-purple-100 rounded-none shadow-lg border min-w-72 w-full hover:scale-105 transition duration-300 overflow-hidden">
             <img src={poster} alt={title} className="w-full aspect-video" />
@@ -14,7 +15,7 @@ const MovieCard = ({ movie }) => {
                     <p><strong>Year:</strong> {year}</p>
                     <p><strong>Rating:</strong> {rating}</p>
                 </div>
-                <button className="btn btn-sm font-bold text-base hover:scale-90 transition-transform duration-300 text-black bg-purple-300 mt-auto w-full">See Details</button>
+                <Link to={`/movie/${_id}`} className="btn btn-sm font-bold text-base hover:scale-90 transition-transform duration-300 text-black bg-purple-300 mt-auto w-full">See Details</Link>
             </div>
         </div>
     );

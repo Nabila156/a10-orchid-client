@@ -7,6 +7,7 @@ import Login from "../login/login";
 import ForgotPassword from "../login/ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
 import AllMovies from "../movies/AllMovies";
+import MovieDetails from "../movies/MovieDetails";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,11 @@ const router = createBrowserRouter([
     path: "/allMovies",
     element: <AllMovies></AllMovies>,
     loader: () => fetch('http://localhost:5000/movies')
+  },
+  {
+    path: "/movie/:id",
+    element: <MovieDetails></MovieDetails>,
+    loader: ({params}) => fetch(`http://localhost:5000/movie/${params.id}`)
   },
   {
     path: "/addMovie",

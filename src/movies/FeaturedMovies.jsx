@@ -1,11 +1,21 @@
 import { useTheme } from "next-themes";
 import MovieCard from "./MovieCard";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
+import { useContext } from "react";
 
 const FeaturedMovies = ({ movies }) => {
 
     const { theme, setTheme } = useTheme();
     // console.log(movies)
+    const { loading } = useContext(AuthContext);
+
+    if (loading) {
+        return <div className="flex justify-center items-center min-h-screen"><span className="loading loading-ring loading-xs"></span>
+            <span className="loading loading-ring loading-sm"></span>
+            <span className="loading loading-ring loading-md"></span>
+            <span className="loading loading-ring loading-lg"></span></div>
+    }
 
     return (
         <div className="font-roboto mt-8">
