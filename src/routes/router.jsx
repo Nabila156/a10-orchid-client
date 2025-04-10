@@ -9,6 +9,7 @@ import MovieDetailsLayout from "../layouts/MovieDetailsLayout";
 import AllMoviesLayout from "../layouts/AllMoviesLayout";
 import RegisterLayout from "../layouts/RegisterLayout";
 import LoginLayout from "../layouts/LoginLayout";
+import MyFavouriteLayout from "../layouts/MyFavouriteLayout";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
   {
     path: "/movie/:id",
     element: <MovieDetailsLayout></MovieDetailsLayout>,
-    loader: ({params}) => fetch(`http://localhost:5000/movie/${params.id}`)
+    loader: ({ params }) => fetch(`http://localhost:5000/movie/${params.id}`)
   },
   {
     path: "/addMovie",
@@ -32,7 +33,13 @@ const router = createBrowserRouter([
       <PrivateRoute>
         <AddMovieLayout></AddMovieLayout>
       </PrivateRoute>
-    ,
+  },
+  {
+    path: "/myFavourite",
+    element:
+      <PrivateRoute>
+        <MyFavouriteLayout></MyFavouriteLayout>
+      </PrivateRoute>
   },
   {
     path: "/register",

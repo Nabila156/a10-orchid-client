@@ -1,4 +1,5 @@
 
+import { Helmet } from "react-helmet";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import Register from "../register/Register";
@@ -7,6 +8,9 @@ import Register from "../register/Register";
 const RegisterLayout = () => {
     return (
         <div className="font-roboto min-h-screen flex flex-col">
+            <Helmet>
+                <title>Orchid | Register</title>
+            </Helmet>
         <nav>
             <Navbar></Navbar>
         </nav>

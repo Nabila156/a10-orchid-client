@@ -5,6 +5,7 @@ import Navbar from "../Navbar";
 import { AuthContext } from "../providers/AuthProvider";
 import { useContext } from "react";
 import Footer from "../Footer";
+import { Helmet } from "react-helmet";
 
 const MovieDetailsLayout = () => {
 
@@ -22,6 +23,9 @@ const MovieDetailsLayout = () => {
 
     return (
         <div className="font-roboto min-h-screen flex flex-col">
+            <Helmet>
+                <title>Orchid | Details</title>
+            </Helmet>
         <nav>
             <Navbar></Navbar>
         </nav>

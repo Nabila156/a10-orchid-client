@@ -5,6 +5,7 @@ import Navbar from "../Navbar";
 import { useLoaderData } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const HomeLayout = () => {
     const movies = useLoaderData();
@@ -18,7 +19,11 @@ const HomeLayout = () => {
     }
 
     return (
+        
         <div className="font-roboto min-h-screen flex flex-col">
+            <Helmet>
+                <title>Orchid | Home</title>
+            </Helmet>
             <nav>
                 <Navbar></Navbar>
             </nav>
