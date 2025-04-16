@@ -91,9 +91,9 @@ const AddMovie = () => {
                 })
             })
 
-             // Reset form fields and rating after successful submission
-             form.reset(); 
-             setRating(0); 
+        // Reset form fields and rating after successful submission
+        form.reset();
+        setRating(0);
 
     }
 
@@ -106,22 +106,22 @@ const AddMovie = () => {
                     <form onSubmit={handleAddMovie} className="card-body">
                         <fieldset className="fieldset">
 
-                            <div className='flex gap-6 items-center'>
-                                <div className='w-full'>
-                                    <div className="flex gap-8">
-                                        <div className="flex flex-col w-1/2">
-                                            <label className="fieldset-label hidden md:block">Movie Poster</label>
+                            <div className='flex md:gap-6 items-center'>
+                                <div className='min-w-[70%] w-full'>
+                                    <div className="md:flex gap-8">
+                                        <div className="mt-2 flex flex-col w-1/2">
+                                            <label className="fieldset-label">Movie Poster</label>
                                             <input type="url" name="poster" className="input w-full" placeholder="Movie Poster url" required />
                                         </div>
-                                        <div className="flex flex-col w-1/2">
-                                            <label className="fieldset-label hidden md:block">Movie Title</label>
+                                        <div className="flex mt-2 flex-col w-1/2">
+                                            <label className="fieldset-label">Movie Title</label>
                                             <input type="text" name="title" className="input w-full" placeholder="Movie Title" required />
                                         </div>
                                     </div>
 
-                                    <div className="flex gap-8">
-                                        <div className="flex flex-col w-1/2">
-                                            <label className="fieldset-label hidden md:block">Genre</label>
+                                    <div className="md:flex gap-8">
+                                        <div className="mt-2 flex flex-col w-1/2">
+                                            <label className="fieldset-label">Genre</label>
                                             <select name="genre" className="input w-full text-gray-400" required>
                                                 <option value="" disabled hidden>Genre</option>
                                                 <option value="Action">Action</option>
@@ -135,15 +135,15 @@ const AddMovie = () => {
                                                 <option value="Documentary">Documentary</option>
                                             </select>
                                         </div>
-                                        <div className="flex flex-col w-1/2">
-                                            <label className="fieldset-label hidden md:block">Duration(mins)</label>
+                                        <div className="mt-2 flex flex-col w-1/2">
+                                            <label className="fieldset-label">Duration(mins)</label>
                                             <input type="number" name="duration" className="input w-full" placeholder="Duration" required />
                                         </div>
                                     </div>
 
                                     <div className="flex gap-8">
-                                        <div className="flex flex-col w-1/2">
-                                            <label className="fieldset-label hidden md:block">Release Year</label>
+                                        <div className="mt-2 flex flex-col w-1/2">
+                                            <label className="fieldset-label">Release Year</label>
                                             <select name="year" className="input w-full text-gray-400" required>
                                                 <option value="" disabled hidden>Release Year</option>
                                                 <option value="2025">2025</option>
@@ -157,12 +157,15 @@ const AddMovie = () => {
                                                 <option value="2017">2017</option>
                                             </select>
                                         </div>
+                                        <div className='w-1/2'>
+
+                                        </div>
 
                                     </div>
-                                    <div className="flex flex-col w-1/2">
-                                        <label className="fieldset-label hidden md:block">Summary</label>
-                                        <textarea type="text" name='summary' className="textarea w-full" placeholder="Summary" required></textarea>
-                                    </div>
+                                    <div className='w-1/2 flex flex-col mt-2'>
+                                            <label className="fieldset-label">Summary</label>
+                                            <textarea type="text" name='summary' className="textarea w-full" placeholder="Summary" required></textarea>
+                                        </div>
 
                                 </div>
 

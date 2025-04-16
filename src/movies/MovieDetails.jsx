@@ -1,10 +1,13 @@
 
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../providers/AuthProvider";
 
 const MovieDetails = ({ movie }) => {
 
     const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
     const { _id, title, poster, genre, duration, year, rating, summary } = movie;
     const handleDelete = _id => {
         // console.log(_id)
@@ -42,6 +45,46 @@ const MovieDetails = ({ movie }) => {
     }
 
 
+    const handleAddToFavourite = () => {
+        if (!user?.email) {
+            Swal.fire("Please login to add to favourites");
+            return;
+        }
+
+        const favouriteMovie = {
+            movieId: _id,
+            title,
+            poster,
+            genre,
+            duration,
+            year,
+            rating,
+            userEmail: user.email,
+        };
+
+        fetch("http://localhost:5000/favourites", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(favouriteMovie),
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire("Added!", `${title} added to favorites.`, "success");
+                    navigate("/myFavourite"); // Navigate after success
+                } else {
+                    Swal.fire("Failed to add favorite", "", "error");
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                Swal.fire("Something went wrong", "", "error");
+            });
+    };
+
+
     return (
         <div className="bg-gray-100 ">
             <div className="flex items-center justify-center p-6">
@@ -74,13 +117,16 @@ const MovieDetails = ({ movie }) => {
                                 <button onClick={() => handleDelete(_id)} className="bg-red-500 hover:scale-95 transition-transform duration-300 text-white px-5 py-2 rounded-lg">
                                     🗑️ Delete Movie
                                 </button>
-                                <button className="bg-blue-500 hover:scale-95 transition-transform duration-300 text-white px-5 py-2 rounded-lg">
+
+                                <button
+                                    onClick={handleAddToFavourite}
+                                    className="bg-blue-500 hover:scale-95 transition-transform duration-300 text-white px-5 py-2 rounded-lg">
                                     ❤️ Add to Favorite
                                 </button>
+
                             </div>
                             <div className="text-center mt-4">
                                 <button
-                                   
                                     className=" bg-green-500 hover:scale-95 transition-transform duration-300 text-white px-5 py-2 rounded-lg"
                                 >
                                     ✏️ Update Movie
