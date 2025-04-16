@@ -1,11 +1,12 @@
 
-import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProvider";
 
 const MovieDetails = ({ movie }) => {
 
+    const [isFavourite, setIsFavourite] = useState(false);
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
     const { _id, title, poster, genre, duration, year, rating, summary } = movie;
@@ -45,12 +46,24 @@ const MovieDetails = ({ movie }) => {
     }
 
 
-    const handleAddToFavourite = () => {
-        if (!user?.email) {
-            Swal.fire("Please login to add to favourites");
-            return;
-        }
+    // To disable add to favourite button
 
+    useEffect(() => {
+        if (user?.email) {
+            fetch(`http://localhost:5000/favourites?email=${user.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    const found = data.find(fav => fav.movieId === _id);
+                    if (found) {
+                        setIsFavourite(true);
+                    }
+                });
+        }
+    }, [user, _id]);
+
+
+
+    const handleAddToFavourite = () => {
         const favouriteMovie = {
             movieId: _id,
             title,
@@ -73,13 +86,13 @@ const MovieDetails = ({ movie }) => {
             .then(data => {
                 if (data.insertedId) {
                     Swal.fire("Added!", `${title} added to favorites.`, "success");
-                    navigate("/myFavourite"); // Navigate after success
+                    navigate("/myFavourite");
                 } else {
                     Swal.fire("Failed to add favorite", "", "error");
                 }
             })
             .catch(err => {
-                console.error(err);
+                // console.error(err);
                 Swal.fire("Something went wrong", "", "error");
             });
     };
@@ -120,8 +133,11 @@ const MovieDetails = ({ movie }) => {
 
                                 <button
                                     onClick={handleAddToFavourite}
-                                    className="bg-blue-500 hover:scale-95 transition-transform duration-300 text-white px-5 py-2 rounded-lg">
-                                    ❤️ Add to Favorite
+                                    disabled={isFavourite}
+                                    className={`${isFavourite ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:scale-95"
+                                        } transition-transform duration-300 text-white px-5 py-2 rounded-lg`}
+                                >
+                                    ❤️ {isFavourite ? "Added to Favorite" : "Add to Favorite"}
                                 </button>
 
                             </div>

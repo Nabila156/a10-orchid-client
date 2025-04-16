@@ -49,7 +49,7 @@ const FavouriteMovies = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     {favouriteMovies.map(movie => (
                         <div key={movie._id} className="border bg-purple-100 rounded-xl overflow-hidden shadow hover:shadow-lg transition duration-300">
-                            <img src={movie.poster} alt={movie.title} className="w-full h-60 object-cover" />
+                            <img src={movie.poster} alt={movie.title} className="w-full aspect-video object-cover" />
                             <div className="p-4">
                                 <h2 className="text-xl text-black font-semibold mb-1">{movie.title}</h2>
                                 <p className="text-sm text-gray-600">🎭 {movie.genre}</p>

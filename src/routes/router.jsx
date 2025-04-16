@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import HomeLayout from "../layouts/HomeLayout";
 import ErrorPage from "../ErrorPage";
 import AddMovieLayout from "../layouts/AddMovieLayout";
-import Login from "../login/login";
 import ForgotPassword from "../login/ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
 import MovieDetailsLayout from "../layouts/MovieDetailsLayout";
@@ -25,7 +24,10 @@ const router = createBrowserRouter([
   },
   {
     path: "/movie/:id",
-    element: <MovieDetailsLayout></MovieDetailsLayout>,
+    element:
+      <PrivateRoute>
+        <MovieDetailsLayout></MovieDetailsLayout>
+      </PrivateRoute>,
     loader: ({ params }) => fetch(`http://localhost:5000/movie/${params.id}`)
   },
   {

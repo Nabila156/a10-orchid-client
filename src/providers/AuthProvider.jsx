@@ -21,6 +21,10 @@ const AuthProvider = ({ children }) => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
+
+                toast.success("Login successful!", {
+                    draggable: true,
+                });
             })
             .catch((error) => {
                 toast.error('Error during Google Sign-In:', error);
