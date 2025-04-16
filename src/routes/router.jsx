@@ -10,6 +10,7 @@ import AllMoviesLayout from "../layouts/AllMoviesLayout";
 import RegisterLayout from "../layouts/RegisterLayout";
 import LoginLayout from "../layouts/LoginLayout";
 import MyFavouriteLayout from "../layouts/MyFavouriteLayout";
+import TestimonialsLayout from "../layouts/TestimonialsLayout";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
   {
     path: "/forgot-password",
     element: <ForgotPassword></ForgotPassword>,
+  },
+  {
+    path: "/testimonials",
+    element: <TestimonialsLayout></TestimonialsLayout>,
   },
   {
     path: "*",

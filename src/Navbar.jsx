@@ -18,6 +18,7 @@ const Navbar = () => {
         <NavLink to={'/allMovies'} className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 border-2  p-1 rounded border-orange-700' : 'text-black'}`}>All Movies</NavLink>
         <NavLink to={'/addMovie'} className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700 border-2 p-1 rounded border-orange-700' : 'text-black'}`}>Add Movie</NavLink>
         <NavLink to={'/myFavourite'} className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700  border-2 border-orange-700 p-1 rounded' : 'text-black'}`}>My Favourites</NavLink>
+        <NavLink to={'/testimonials'} className={({ isActive }) => `font-bold text-xl lg:text-lg mt-1 lg:mt-0 hover:scale-125 transform transition duration-300 ${theme === "dark" ? "text-white" : ""} ${isActive ? 'text-purple-700  border-2 border-orange-700 p-1 rounded' : 'text-black'}`}>Testimonials</NavLink>
 
         {
             user && user?.email ?
