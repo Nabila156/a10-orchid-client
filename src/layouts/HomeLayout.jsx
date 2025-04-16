@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Helmet } from "react-helmet";
 import PopularCategories from "../PopularCategories";
+import DownloadApp from "../DownloadApp";
 
 const HomeLayout = () => {
     const movies = useLoaderData();
@@ -32,6 +33,7 @@ const HomeLayout = () => {
                 <Banner></Banner>
                 <FeaturedMovies movies={movies}></FeaturedMovies>
                 <PopularCategories></PopularCategories>
+                <DownloadApp></DownloadApp>
             </main>
             <footer>
                 <Footer></Footer>

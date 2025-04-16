@@ -1,7 +1,7 @@
 const PopularCategories = () => {
     return (
         <div className="bg-purple-100 py-10 px-4">
-            <h1 className="text-center text-3xl font-extrabold mb-6">Popular Movies</h1>
+            <h1 className="text-center text-black text-3xl font-extrabold mb-6">Popular Movies</h1>
             <p className="text-center max-w-2xl mx-auto mb-10 text-gray-700">
                 From action-packed blockbusters to heartwarming classics—find your next favorite film here!
                 Dive into curated picks, hidden gems, and all-time favorites—all in one place!
