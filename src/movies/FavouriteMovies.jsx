@@ -16,7 +16,7 @@ const FavouriteMovies = () => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/favourites?email=${user.email}`)
+            fetch(`https://orchid-server-gilt.vercel.app/favourites?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setFavouriteMovies(data);
@@ -25,7 +25,7 @@ const FavouriteMovies = () => {
     }, [user?.email]);
 
     const handleDeleteFavorite = (id) => {
-        fetch(`http://localhost:5000/favourites/${id}`, {
+        fetch(`https://orchid-server-gilt.vercel.app/favourites/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

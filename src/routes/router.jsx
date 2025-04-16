@@ -16,12 +16,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <HomeLayout></HomeLayout>,
-    loader: () => fetch('http://localhost:5000/featured')
+    loader: () => fetch('https://orchid-server-gilt.vercel.app/featured')
   },
   {
     path: "/allMovies",
     element: <AllMoviesLayout></AllMoviesLayout>,
-    loader: () => fetch('http://localhost:5000/movies')
+    loader: () => fetch('https://orchid-server-gilt.vercel.app/movies')
   },
   {
     path: "/movie/:id",
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       <PrivateRoute>
         <MovieDetailsLayout></MovieDetailsLayout>
       </PrivateRoute>,
-    loader: ({ params }) => fetch(`http://localhost:5000/movie/${params.id}`)
+    loader: ({ params }) => fetch(`https://orchid-server-gilt.vercel.app/movie/${params.id}`)
   },
   {
     path: "/addMovie",
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
     element: <PrivateRoute>
       <UpdateMovieLayout></UpdateMovieLayout>
     </PrivateRoute>,
-    loader:({params})=>fetch(`http://localhost:5000/movie/${params.id}`)
+    loader:({params})=>fetch(`https://orchid-server-gilt.vercel.app/movie/${params.id}`)
   },
   {
     path: "*",

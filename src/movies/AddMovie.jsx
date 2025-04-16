@@ -75,7 +75,7 @@ const AddMovie = () => {
 
 
         // send data to the server
-        fetch('http://localhost:5000/movies', {
+        fetch('https://orchid-server-gilt.vercel.app/movies', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -22,7 +22,7 @@ const MovieDetails = ({ movie }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/movie/${_id}`, {
+                fetch(`https://orchid-server-gilt.vercel.app/movie/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -50,7 +50,7 @@ const MovieDetails = ({ movie }) => {
 
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/favourites?email=${user.email}`)
+            fetch(`https://orchid-server-gilt.vercel.app/favourites?email=${user.email}`)
                 .then(res => res.json())
                 .then(data => {
                     const found = data.find(fav => fav.movieId === _id);
@@ -75,7 +75,7 @@ const MovieDetails = ({ movie }) => {
             userEmail: user.email,
         };
 
-        fetch("http://localhost:5000/favourites", {
+        fetch("https://orchid-server-gilt.vercel.app/favourites", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

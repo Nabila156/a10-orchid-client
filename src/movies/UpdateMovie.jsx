@@ -76,7 +76,7 @@ const UpdateMovie = ({ movie }) => {
 
 
         // send data to the server
-        fetch(`http://localhost:5000/movie/${_id}`, {
+        fetch(`https://orchid-server-gilt.vercel.app/movie/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
