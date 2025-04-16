@@ -2,6 +2,7 @@
 import { Helmet } from 'react-helmet';
 import Footer from '../Footer';
 import Navbar from '../Navbar';
+import FavouriteMovies from '../movies/FavouriteMovies';
 
 const MyFavouriteLayout = () => {
     return (
@@ -13,7 +14,7 @@ const MyFavouriteLayout = () => {
             <Navbar></Navbar>
         </nav>
         <main className="flex-grow">
-            
+            <FavouriteMovies></FavouriteMovies>
         </main>
         <footer>
             <Footer></Footer>

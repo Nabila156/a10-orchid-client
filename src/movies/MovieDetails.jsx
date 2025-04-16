@@ -27,12 +27,14 @@ const MovieDetails = ({ movie }) => {
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: `${title} has been deleted.`,
                                 icon: "success"
                             });
                         }
                     })
-                    .then(navigate('/allMovies'))
+                    .then(() => {
+                        navigate('/allMovies');
+                    })
 
                 // console.log('delete confirmed')
             }
@@ -69,11 +71,19 @@ const MovieDetails = ({ movie }) => {
 
                             {/* Action Buttons */}
                             <div className="flex flex-wrap gap-4 mt-6">
-                                <button onClick={() => handleDelete(_id)} className="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg transition-all">
+                                <button onClick={() => handleDelete(_id)} className="bg-red-500 hover:scale-95 transition-transform duration-300 text-white px-5 py-2 rounded-lg">
                                     🗑️ Delete Movie
                                 </button>
-                                <button className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded-lg transition-all">
+                                <button className="bg-blue-500 hover:scale-95 transition-transform duration-300 text-white px-5 py-2 rounded-lg">
                                     ❤️ Add to Favorite
+                                </button>
+                            </div>
+                            <div className="text-center mt-4">
+                                <button
+                                   
+                                    className=" bg-green-500 hover:scale-95 transition-transform duration-300 text-white px-5 py-2 rounded-lg"
+                                >
+                                    ✏️ Update Movie
                                 </button>
                             </div>
                         </div>

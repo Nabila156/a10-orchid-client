@@ -6,6 +6,7 @@ import { useLoaderData } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Helmet } from "react-helmet";
+import PopularCategories from "../PopularCategories";
 
 const HomeLayout = () => {
     const movies = useLoaderData();
@@ -30,6 +31,7 @@ const HomeLayout = () => {
             <main className="flex-grow">
                 <Banner></Banner>
                 <FeaturedMovies movies={movies}></FeaturedMovies>
+                <PopularCategories></PopularCategories>
             </main>
             <footer>
                 <Footer></Footer>
