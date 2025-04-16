@@ -14,20 +14,6 @@
 
 ---
 
-## 📋 Pages and Routes Overview
-
-- **Home Page** – Static slider, featured movies, and two extra informative sections.
-- **All Movies** – 3-column responsive grid view of all added movies.
-- **Add Movie** (Private) – Form with full validation to add new movies.
-- **Movie Details** (Private) – Full information + options to update, delete, or add to favorites.
-- **Update Movie** (Private) – Prefilled form with the same validation rules as Add Movie.
-- **My Favorites** (Private) – See and manage your favorite movie list.
-- **Login / Register** – Auth forms with validation and Google Sign-in.
-- **Extra Route** – Public route for displaying anything relevant (e.g., Movie News, Trending, etc.).
-- **404 Page** – Custom page not found UI for unknown routes.
-
----
-
 ## 🛠️ Tech Stack
 
 - **Frontend**: React, React Router DOM, Tailwind CSS, DaisyUI, React Hook Form, react-simple-star-rating
