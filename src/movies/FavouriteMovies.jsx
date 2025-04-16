@@ -20,7 +20,6 @@ const FavouriteMovies = () => {
                 .then(res => res.json())
                 .then(data => {
                     setFavouriteMovies(data);
-                    //   setIsLoading(false);
                 });
         }
     }, [user?.email]);

@@ -2,17 +2,22 @@ import { useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 
-const AddMovie = () => {
+const UpdateMovie = ({ movie }) => {
 
-    const [rating, setRating] = useState(0);
+    const navigate = useNavigate();
+
+    const { _id, title, poster, genre, duration, year, rating, summary } = movie;
+
+    const [movieRating, setMovieRating] = useState(rating);
 
     const handleRatingChange = (newRating) => {
-        setRating(newRating)
+        setMovieRating(newRating)
     }
 
-    const handleAddMovie = event => {
+    const handleUpdateMovie = event => {
         event.preventDefault();
 
         const form = event.target;
@@ -23,8 +28,7 @@ const AddMovie = () => {
         const year = form.year.value;
         const summary = form.summary.value;
 
-        const newMovie = { title, poster, genre, duration, year, rating, summary };
-        // console.log(newMovie)
+        const updatedMovie = { title, poster, genre, duration, year, rating, summary };
 
 
         // Validation for movie title
@@ -60,7 +64,7 @@ const AddMovie = () => {
         }
 
 
-        if (rating === 0) {
+        if (movieRating === 0) {
             toast.error("You must select a rating to add a movie.", {
                 position: "top-center",
                 autoClose: 3000,
@@ -72,28 +76,33 @@ const AddMovie = () => {
 
 
         // send data to the server
-        fetch('http://localhost:5000/movies', {
-            method: 'POST',
+        fetch(`http://localhost:5000/movie/${_id}`, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newMovie)
+            body: JSON.stringify(updatedMovie)
         })
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
 
-                Swal.fire({
-                    title: 'Congratulations!',
-                    text: 'Movie added successfully',
-                    icon: 'success',
-                    confirmButtonText: 'Ok'
-                })
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: 'Congratulations!',
+                        text: 'Movie updated successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                    .then(()=>{
+                        navigate(`/movie/${_id}`);
+                    })
+                }
             })
 
         // Reset form fields and rating after successful submission
         form.reset();
-        setRating(0);
+        setMovieRating(0);
 
     }
 
@@ -103,7 +112,7 @@ const AddMovie = () => {
             <p className="text-4xl text-center text-black py-8 font-bold">Add Your Movie</p>
             <div className="hero px-10">
                 <div className="card w-full bg-base-100 shadow-2xl">
-                    <form onSubmit={handleAddMovie} className="card-body">
+                    <form onSubmit={handleUpdateMovie} className="card-body">
                         <fieldset className="fieldset">
 
                             <div className='flex md:gap-6 items-center'>
@@ -111,18 +120,18 @@ const AddMovie = () => {
                                     <div className="md:flex gap-8">
                                         <div className="mt-2 flex flex-col w-1/2">
                                             <label className="fieldset-label">Movie Poster</label>
-                                            <input type="url" name="poster" className="input w-full" placeholder="Movie Poster url" required />
+                                            <input type="url" name="poster" defaultValue={poster} className="input w-full" placeholder="Movie Poster url" required />
                                         </div>
                                         <div className="flex mt-2 flex-col w-1/2">
                                             <label className="fieldset-label">Movie Title</label>
-                                            <input type="text" name="title" className="input w-full" placeholder="Movie Title" required />
+                                            <input type="text" name="title" defaultValue={title} className="input w-full" placeholder="Movie Title" required />
                                         </div>
                                     </div>
 
                                     <div className="md:flex gap-8">
                                         <div className="mt-2 flex flex-col w-1/2">
                                             <label className="fieldset-label">Genre</label>
-                                            <select name="genre" className="input w-full text-gray-400" required>
+                                            <select name="genre" defaultValue={genre} className="input w-full text-gray-400" required>
                                                 <option value="" disabled hidden>Genre</option>
                                                 <option value="Action">Action</option>
                                                 <option value="Comedy">Comedy</option>
@@ -137,14 +146,14 @@ const AddMovie = () => {
                                         </div>
                                         <div className="mt-2 flex flex-col w-1/2">
                                             <label className="fieldset-label">Duration(mins)</label>
-                                            <input type="number" name="duration" className="input w-full" placeholder="Duration" required />
+                                            <input type="number" name="duration" defaultValue={duration} className="input w-full" placeholder="Duration" required />
                                         </div>
                                     </div>
 
                                     <div className="flex gap-8">
                                         <div className="mt-2 flex flex-col w-1/2">
                                             <label className="fieldset-label">Release Year</label>
-                                            <select name="year" className="input w-full text-gray-400" required>
+                                            <select name="year" defaultValue={year} className="input w-full text-gray-400" required>
                                                 <option value="" disabled hidden>Release Year</option>
                                                 <option value="2025">2025</option>
                                                 <option value="2024">2024</option>
@@ -163,9 +172,9 @@ const AddMovie = () => {
 
                                     </div>
                                     <div className='w-1/2 flex flex-col mt-2'>
-                                            <label className="fieldset-label">Summary</label>
-                                            <textarea type="text" name='summary' className="textarea w-full" placeholder="Summary" required></textarea>
-                                        </div>
+                                        <label className="fieldset-label">Summary</label>
+                                        <textarea type="text" name='summary' defaultValue={summary} className="textarea w-full" placeholder="Summary" required></textarea>
+                                    </div>
 
                                 </div>
 
@@ -173,7 +182,7 @@ const AddMovie = () => {
                                     <label className="fieldset-label hidden md:block">Rating</label>
                                     <Rating
                                         onClick={handleRatingChange}
-                                        ratingValue={rating} // Set the current rating value
+                                        initialValue={movieRating}
                                         fillColor="#ffd700"
                                         allowHalfIcon
                                         required
@@ -181,7 +190,7 @@ const AddMovie = () => {
                                 </div>
                             </div>
 
-                            <button className="btn btn-neutral text-xl mt-4">Add Movie</button>
+                            <button className="btn btn-neutral text-xl mt-4">Update Movie</button>
                         </fieldset>
                     </form>
                 </div>
@@ -190,4 +199,4 @@ const AddMovie = () => {
     );
 };
 
-export default AddMovie;
+export default UpdateMovie;

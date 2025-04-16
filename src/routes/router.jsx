@@ -10,6 +10,7 @@ import RegisterLayout from "../layouts/RegisterLayout";
 import LoginLayout from "../layouts/LoginLayout";
 import MyFavouriteLayout from "../layouts/MyFavouriteLayout";
 import TestimonialsLayout from "../layouts/TestimonialsLayout";
+import UpdateMovieLayout from "../layouts/UpdateMovieLayout";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,13 @@ const router = createBrowserRouter([
   {
     path: "/testimonials",
     element: <TestimonialsLayout></TestimonialsLayout>,
+  },
+  {
+    path: "/updateMovie/:id",
+    element: <PrivateRoute>
+      <UpdateMovieLayout></UpdateMovieLayout>
+    </PrivateRoute>,
+    loader:({params})=>fetch(`http://localhost:5000/movie/${params.id}`)
   },
   {
     path: "*",

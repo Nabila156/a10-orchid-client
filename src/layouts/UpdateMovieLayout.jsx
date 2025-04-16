@@ -1,20 +1,23 @@
 import { Helmet } from "react-helmet";
-import AddMovie from "../movies/AddMovie";
-import Footer from "../Footer";
 import Navbar from "../Navbar";
+import Footer from "../Footer";
+import UpdateMovie from "../movies/UpdateMovie";
+import { useLoaderData } from "react-router-dom";
 
+const UpdateMovieLayout = () => {
 
-const AddMovieLayout = () => {
+    const movie = useLoaderData();
+
     return (
         <div className="font-roboto min-h-screen flex flex-col">
             <Helmet>
-                <title>Orchid | Add Movie</title>
+                <title>Orchid | Update Movie</title>
             </Helmet>
             <nav>
                 <Navbar></Navbar>
             </nav>
             <main className="flex-grow">
-                <AddMovie></AddMovie>
+                <UpdateMovie movie={movie}></UpdateMovie>
             </main>
             <footer>
                 <Footer></Footer>
@@ -23,4 +26,4 @@ const AddMovieLayout = () => {
     );
 };
 
-export default AddMovieLayout;
+export default UpdateMovieLayout;

@@ -1,6 +1,6 @@
 
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../providers/AuthProvider";
 
@@ -141,12 +141,14 @@ const MovieDetails = ({ movie }) => {
                                 </button>
 
                             </div>
-                            <div className="text-center mt-4">
-                                <button
-                                    className=" bg-green-500 hover:scale-95 transition-transform duration-300 text-white px-5 py-2 rounded-lg"
-                                >
-                                    ✏️ Update Movie
-                                </button>
+                            <div className="lg:text-center mt-4">
+                                <Link to={`/updateMovie/${_id}`}>
+                                    <button
+                                        className=" bg-green-500 hover:scale-95 transition-transform duration-300 text-white px-5 py-2 rounded-lg"
+                                    >
+                                        ✏️ Update Movie
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
